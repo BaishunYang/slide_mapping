@@ -10,7 +10,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import math
 
-#output the magnetic Cr atom coordinates
+#output the magnetic Cr atom coordinates to pos file
 f=open("POSCAR_orth", 'r')
 lines=f.readlines()
 a=float(lines[2].split()[0])
