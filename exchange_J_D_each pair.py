@@ -10,7 +10,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import math
 
-
+##read the lattice constant and atomic positions, arrange atomic position to pos file
 a0=6.93
 #output the magnetic Cr atom coordinates
 f=open("POSCAR_orth", 'r')
@@ -60,6 +60,7 @@ for i in range (0, N_Cr):
     move=fcriteria.readlines()
     lenmax=len(move)
     
+    ### assignment the exchange parameters
     atom_i_index_array=[]
     atom_i_n1_index_array=[]
     atom_i_n1_vamx_array=[]
@@ -87,8 +88,7 @@ for i in range (0, N_Cr):
     if i<N_Cr/2:
         
         for j in range (0, lenmax):
-            
-            
+                       
             move_x=float(move[j].split()[0])
             move_y=float(move[j].split()[1])
             delta_x=atom_i_n1_dx-move_x*a0
@@ -97,6 +97,7 @@ for i in range (0, N_Cr):
             
             delta_len=(atom_i_n1_dx**2+atom_i_n1_dy**2)**0.5
             
+   ###within the unit-cell region, mapping the MMEI parameters
             if delta_len>a0-0.1:
                 J11=float(move[j].split()[2])
                 J12=float(move[j].split()[3])
@@ -139,8 +140,8 @@ for i in range (0, N_Cr):
                 D21y_330=float(move[j].split()[15])
                 D21z_330=float(move[j].split()[16])
     
-            
-            
+  ###write the parameters in one file          
+ 
             atom_i_index_array.append(atom_i_index)
             atom_i_n1_index_array.append(atom_i_n1_index)
             atom_i_n1_vamx_array.append(atom_i_n1_vamx)
@@ -244,7 +245,8 @@ for i in range (0, N_Cr):
                     D21z_330_array.append(D21z_330)
                     
                     break
-            
+    
+    ###put the parameters in one file and sort from the nearest 
         
     list=np.c_[delta_criteria_array, atom_i_index_array, atom_i_n1_index_array, atom_i_n1_vamx_array, atom_i_n1_vamy_array, atom_i_n1_vamz_array, J11_array, J12_array, J24_array, D24x_array, D24y_array, D24z_array, D21x_90_array, D21y_90_array, D21z_90_array, D21x_210_array, D21y_210_array, D21z_210_array, D21x_330_array, D21y_330_array, D21z_330_array,]
     list=np.array(list)
@@ -256,6 +258,8 @@ for i in range (0, N_Cr):
     
     Jnearest_oop=list2[0], list2[1], list2[2], list2[3], list2[4], list2[5], list2[6], list2[7], list2[8], list2[9], list2[10], list2[11], list2[12], list2[13], list2[14], list2[15], list2[16], list2[17], list2[18], list2[19], list2[20]
    
+
+### write the parameters in Jnearest_oop1-10.dat file
     with open('Jnearest_oop10.dat', 'a') as h:
         h.write(" ".join('%s' %id for id in Jnearest_oop)+"\n")
     
