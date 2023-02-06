@@ -10,14 +10,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 import math
 
-###file Jnearest_oop.dat 
-###i	j	vampire_x	vampire_y	vampire_z	(0-4)
+### file Jnearest_oop.dat 
+### i	j	vampire_x	vampire_y	vampire_z	(0-4)
 ###J11	J12	J24	D24x	D24y	D24z	(5-10)
 ###D21x D21y D21z (000, 11-13), D21x D21y D21z (-1-10, 14-16), D21x D21y D21z (0-10, 17-19)
 
-###file Jnearest_ip.dat 
-###i (j vampire_xyz, degree)_inplane 3 and 6 atoms
-###0,   (2-6), (8-12), (14-18),       (20-24), (26-30), (32-36), (38-42), (44-48), (50-54)
+### file Jnearest_ip.dat 
+### i (j vampire_xyz, degree)_inplane 3 and 6 atoms
+### 0,   (2-6), (8-12), (14-18),       (20-24), (26-30), (32-36), (38-42), (44-48), (50-54)
 
 
 ###twist angle alpha
@@ -60,6 +60,8 @@ with open('Jnearest_oop10.dat', 'r') as g:
         D21y_330=float(lines[i].split()[19])
         D21z_330=float(lines[i].split()[20])
         
+        
+#### input the nearest in-plane atoms with in the one-unit-cell region which include 9 atoms
 #        with open('nearest_ip36.dat', 'r') as h:
 #            lines_ip=h.readlines()
 ##            for j in range(len(open('Jnearest_ip.dat', 'r').readlines())):
@@ -167,12 +169,12 @@ with open('Jnearest_oop10.dat', 'r') as g:
 #                Dip3_z=-D21z_90
 ###            
            
-#                
+#  output the out-of-plane exchange parameters from inputucf_Jz1 to inputucf_Jz10, should modify here         
         with open ('inputucf_Jz10.dat', 'a') as m:
             Jexchange_all=index_i, index_oop_j, vampire_oop_x, vampire_oop_y, vampire_oop_z, J24, D24x, D24y, D24z, "\n"
             m.write(" ".join('%s' %id for id in Jexchange_all))
 
-                
+#  output the in-plane exchange parameters from inputucf_Jxy
 #            with open ('inputucf_Jxy.dat', 'a') as m:
 #                Jexchange_all=index_i, index_ip_n3_1, vampire_x_ip_n3_1, vampire_y_ip_n3_1, vampire_z_ip_n3_1, J12, Dip1_x, Dip1_y, Dip1_z, "\n", index_i, index_ip_n3_2, vampire_x_ip_n3_2, vampire_y_ip_n3_2, vampire_z_ip_n3_2, J12, Dip2_x, Dip2_y, Dip2_z, "\n", index_i, index_ip_n3_3, vampire_x_ip_n3_3, vampire_y_ip_n3_3, vampire_z_ip_n3_3, J12, Dip3_x, Dip3_y, Dip3_z, "\n", index_i, index_ip_n6_1, vampire_x_ip_n6_1, vampire_y_ip_n6_1, vampire_z_ip_n6_1, J11, 0, 0, 0, "\n", index_i, index_ip_n6_2, vampire_x_ip_n6_2, vampire_y_ip_n6_2, vampire_z_ip_n6_2, J11, 0, 0, 0, "\n", index_i, index_ip_n6_3, vampire_x_ip_n6_3, vampire_y_ip_n6_3, vampire_z_ip_n6_3, J11, 0, 0, 0, "\n", index_i, index_ip_n6_4, vampire_x_ip_n6_4, vampire_y_ip_n6_4, vampire_z_ip_n6_4, J11, 0, 0, 0, "\n", index_i, index_ip_n6_5, vampire_x_ip_n6_5, vampire_y_ip_n6_5, vampire_z_ip_n6_5, J11, 0, 0, 0, "\n", index_i, index_ip_n6_6, vampire_x_ip_n6_6, vampire_y_ip_n6_6, vampire_z_ip_n6_6, J11, 0, 0, 0, "\n"
 #                m.write(" ".join('%s' %id for id in Jexchange_all))
