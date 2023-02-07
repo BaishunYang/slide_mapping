@@ -37,6 +37,7 @@ f.close()
 pos =np.c_[pos_x_list,pos_y_list,pos_z_list]
 
 
+###output the nearest 1-10 out-of-plane Cr-Cr pairs
 Jnearest=[]
 for i in range (0, N_Cr):
     
