@@ -14,7 +14,7 @@ f=open("inputucf_Jzs.dat", 'r')
 line_f=f.readlines()
 linemax=len(line_f)
 
-## remove the parameters not pair occur
+## remove the parameters not pair occur and rewrite the J parameters as input in VAMPIRE
 for i in range (linemax):
     for j in range(linemax):
         if float(line_f[j].split()[0])==float(line_f[i].split()[1]) and float(line_f[j].split()[1])==float(line_f[i].split()[0]):
