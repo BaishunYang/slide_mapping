@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 import math
 
 ##read the lattice constant and atomic positions, arrange atomic position to pos file
-a0=6.93
+a0=6.93  ###lattice constant of BL-CrI3
 #output the magnetic Cr atom coordinates
 f=open("POSCAR_orth", 'r')
 lines=f.readlines()
@@ -56,6 +56,9 @@ for i in range (0, N_Cr):
         atom_i_n1_dx=float(glines[i].split()[77])
         atom_i_n1_dy=float(glines[i].split()[78])
         atom_i_n1_dz=float(glines[i].split()[79])
+    
+    ###criteria is the file including all the magnetic exchange parameters in BL-CrI3 with different stackings
+    ###including the sliding vector, Jinter, Jintra, Dinter, Dintra
     
     fcriteria=open("criteria.txt", 'r')
     move=fcriteria.readlines()
@@ -141,7 +144,9 @@ for i in range (0, N_Cr):
                 D21y_330=float(move[j].split()[15])
                 D21z_330=float(move[j].split()[16])
     
-  ###write the parameters in one file          
+###write the parameters in one file
+### D21 is the interlayer DM, D24 is the intralayer DM, 
+###**90, 210 and 330 indicate the three nearest Cr-Cr pairs at different directions
  
             atom_i_index_array.append(atom_i_index)
             atom_i_n1_index_array.append(atom_i_n1_index)
