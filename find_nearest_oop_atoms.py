@@ -116,9 +116,9 @@ for i in range (0, N_Cr):
                 theta=theta*180/math.pi
                 
         else:
-             delta_scale=20  #set a very large value
+             delta_scale=20  #set a very large value for convinence 
              
-
+### sort the interactions from the nearest to 10th nearest
         delta_x_array.append(delta_x)
         delta_y_array.append(delta_y)
         delta_z_array.append(delta_z)
@@ -130,7 +130,7 @@ for i in range (0, N_Cr):
         theta_array.append(theta)
     delta_array=np.c_[index_array, vampire_dx_array, vampire_dy_array, vampire_dz_array, delta_x_array, delta_y_array, delta_z_array, delta_scale_array]
     nearest = sorted(delta_array, key=lambda x: (x[7]))
-
+###output the interactions to nearest_**
     nearest_1=nearest[0]
     nearest_2=nearest[1]
     nearest_3=nearest[2]
