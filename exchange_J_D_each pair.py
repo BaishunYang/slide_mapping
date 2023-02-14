@@ -15,6 +15,8 @@ a0=6.93  ###lattice constant of BL-CrI3
 #output the magnetic Cr atom coordinates
 f=open("POSCAR_orth", 'r')
 lines=f.readlines()
+
+###lattice constant a, b, c and Number of I, Cr atoms
 a=float(lines[2].split()[0])
 b=float(lines[3].split()[1])
 c=float(lines[4].split()[2])
@@ -25,6 +27,8 @@ N_atom=N_I+N_Cr
 pos_x_list=[]
 pos_y_list=[]
 pos_z_list=[]
+
+arrange the positions to pos file
 for i in range (8+N_I, 8+N_atom):
     pos_x=lines[i].split()[0]
     pos_y=lines[i].split()[1]
@@ -40,7 +44,8 @@ pos =np.c_[pos_x_list,pos_y_list,pos_z_list]
 ###output the nearest 1-10 out-of-plane Cr-Cr pairs
 Jnearest=[]
 for i in range (0, N_Cr):
-    
+
+    ###nearest_oop include the out-of-plane atomic pairs and related J, D parameters
     with open('nearest_oop.dat', 'r') as g:
         glines=g.readlines()
 
